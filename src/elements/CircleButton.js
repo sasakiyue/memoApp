@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
 import fontAwesome from '../../assets/fonts/fa-solid-900.ttf';
 
-class CircleBotton extends React.Component {
+class CircleButton extends React.Component {
   state = {
     fontLoaded: false,
   }
@@ -16,7 +16,7 @@ class CircleBotton extends React.Component {
   }
 
   render() {
-    const { style, color } = this.props;
+    const { style, color, onPress } = this.props;
 
     let bgColor = '#E31676';
     let textColor = '#fff';
@@ -25,39 +25,45 @@ class CircleBotton extends React.Component {
       bgColor = '#fff';
       textColor = '#E31676';
     }
-
     return (
-      <View style={[styles.CircleBotton, style, { backgroundColor: bgColor }]}>
-        {
-          this.state.fontLoaded ? (
-            <Text style={[styles.CircleBottonTitle, { color: textColor }]}>
-              {this.props.children}
-            </Text>
-          ) : null
-        }
-      </View>
+      <TouchableHighlight style={[styles.container, style]} onPress={onPress}>
+        <View style={[styles.CircleButton, { backgroundColor: bgColor }]}>
+          {
+            this.state.fontLoaded ? (
+              <Text style={[styles.CircleButtonTitle, { color: textColor }]}>
+                {this.props.children}
+              </Text>
+            ) : null
+          }
+        </View>
+      </TouchableHighlight>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  CircleBotton: {
+  container: {
     position: 'absolute',
     bottom: 32,
     right: 32,
+  },
+  CircleButton: {
+    // position: 'absolute',
+    // bottom: 32,
+    // right: 32,
     width: 48,
     height: 48,
     // backgroundColor: '#E31676',
-    borderRadius: 50,
+    borderRadius: 24,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    zIndex: 10,
+    // zIndex: 10,
   },
-  CircleBottonTitle: {
+  CircleButtonTitle: {
     fontFamily: 'FontAwesome',
     fontSize: 24,
     lineHeight: 24,
@@ -65,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CircleBotton;
+export default CircleButton;
