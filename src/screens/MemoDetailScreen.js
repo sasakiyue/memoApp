@@ -18,7 +18,7 @@ class MemoDetailScreen extends React.Component {
           </Text>
         </View>
 
-        <CircleBotton color="white" style={styles.editBotton}>@</CircleBotton>
+        <CircleBotton color="white" style={styles.editBotton}>{'\uf303'}</CircleBotton>
 
       </View>
     );
