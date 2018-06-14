@@ -1,11 +1,23 @@
 // import React from 'react';
 // import { StyleSheet, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-
+import firebase from 'firebase'
 // import Appbar from './src/components/Appbar';
 import MemoListScreen from './src/screens/MemoListScreen';
 import MemoDetailScreen from './src/screens/MemoDetailScreen';
 import LoginScreen from './src/screens/LoginScreen';
+
+import ENV from "./env.json";
+
+const config = {
+  apiKey: ENV.FIREBASE_API_KEY,
+  authDomain: ENV.FIREBASE_AUTH_DOMAIN,
+  databaseURL: ENV.FIREBASE_DB_URL,
+  projectId: ENV.FIREBASE_PRJ_ID,
+  storageBucket: ENV.FIREBASE_STORAGE,
+  messagingSenderId: ENV.FIREBASE_SENDRE_ID,
+};
+firebase.initializeApp(config);
 
 /*
 export default class App extends React.Component {
@@ -20,8 +32,8 @@ export default class App extends React.Component {
 }
 */
 const App = StackNavigator({
-  Home: { screen: MemoListScreen },
   Login: { screen: LoginScreen },
+  Home: { screen: MemoListScreen },
   MemoDetail: { screen: MemoDetailScreen },
 }, {
   navigationOptions: {
@@ -29,6 +41,8 @@ const App = StackNavigator({
     headerStyle: {
       backgroundColor: '#265366',
     },
+    headerTintColor: '#fff',
+    headerBackTitle: null,
     headerTitleStyle: {
       color: '#fff',
     },
