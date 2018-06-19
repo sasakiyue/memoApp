@@ -1,13 +1,17 @@
 // import React from 'react';
 // import { StyleSheet, View } from 'react-native';
+// import RNFetchBlob from 'react-native-fetch-blob';
 import { StackNavigator } from 'react-navigation';
-import firebase from 'firebase'
+import firebase from 'firebase';
+// import firebase from 'react-native-firebase';
+
 // import Appbar from './src/components/Appbar';
 import MemoListScreen from './src/screens/MemoListScreen';
 import MemoDetailScreen from './src/screens/MemoDetailScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import PhotoPicker from './src/screens/PhotoPicker';
 
-import ENV from "./env.json";
+import ENV from './env.json';
 
 const config = {
   apiKey: ENV.FIREBASE_API_KEY,
@@ -31,6 +35,7 @@ export default class App extends React.Component {
   }
 }
 */
+
 const App = StackNavigator({
   Login: { screen: LoginScreen },
   Home: { screen: MemoListScreen },
